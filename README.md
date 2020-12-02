@@ -1,2 +1,2 @@
-# AdvancedNodeStarter
-Starting project for a course on Advanced Node @ Udemy
+# ReactBlogApp
+An app made with express.js and React along with AdvancedNodeConcepts course on @udemy.com
