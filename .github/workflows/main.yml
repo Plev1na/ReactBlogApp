@@ -11,15 +11,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Node_CI
     env: 
       NODE_ENV: ci
       PORT: 3000
     steps:
       - uses: actions/checkout@v2
-      - run: |
-        npm install
-        npm run build
-        nohup npm test &
-        sleep 3
-        npm run test
+      - uses: actions/setup-node@v1
+        with
+          node-version: 8
+      - run: npm ci
+      - run: npm run build
+      - run: npm run test
