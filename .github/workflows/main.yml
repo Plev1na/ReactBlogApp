@@ -21,10 +21,10 @@ jobs:
         with:
           node-version: '8.x'
         run: npm install
-        run: npm run build
-        run: nohup npm test &
-        run: sleep 3
-        run: npm run test
+      - run: npm run build
+      - run: nohup npm test &
+      - run: sleep 3
+      - run: npm run test
 
       - uses: actions/cache@v2
         with:
