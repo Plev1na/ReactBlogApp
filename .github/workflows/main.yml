@@ -16,19 +16,21 @@ jobs:
       NODE_ENV: ci
       PORT: 3000
     steps:
+      - uses: actions/cache@v2
+          with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+              ${{ runner.os }}-node-
       - uses: actions/checkout@v2
       - name: Use Node.js
         with:
           node-version: '8.x'
-        run: npm install
-      - run: npm run build
-      - run: nohup npm test &
-      - run: sleep 3
-      - run: npm run test
+        run: |
+          npm install
+          npm run build
+          nohup npm test &
+          sleep 3
+          npm run test
 
-      - uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+      
