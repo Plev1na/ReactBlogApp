@@ -5,7 +5,7 @@ let page;
 
 beforeEach(async () => {
   page = await Page.build();
-  await page.goto('http://localhost:3000');
+  await page.goto('http://127.0.0.1:3000');
 });
 
 afterEach(async () => {
@@ -40,7 +40,7 @@ describe('When logged in', async () => {
       await page.click('button.green');
       const url = await page.url();
 
-      expect(url).toMatch('http://localhost:3000/blogs');
+      expect(url).toMatch('http://127.0.0.1:3000/blogs');
     });
   });
 
